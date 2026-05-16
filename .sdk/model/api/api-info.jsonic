@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://leakcheck.net"
+      }
+      description: "This API allows users to scrape and retrieve user data from various online sources. It gathers a wide range of user information including names, addresses, phone numbers, and more, which can be utilized for various applications and analytics."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://leakcheck.net/api"
+        }
+      ]
+      title: "User Data Scraper"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

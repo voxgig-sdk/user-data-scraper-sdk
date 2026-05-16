@@ -1,0 +1,22 @@
+# BasicUserDataFlow
+
+main: kit: flow: BasicUserDataFlow:
+{
+  entity: "user_data",
+  kind: "basic",
+  name: "BasicUserDataFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "user_data_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserDataFlow"
+}

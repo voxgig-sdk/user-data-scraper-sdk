@@ -1,0 +1,239 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "User Data Scraper",
+    "description": "This API allows users to scrape and retrieve user data from various online sources. It gathers a wide range of user information including names, addresses, phone numbers, and more, which can be utilized for various applications and analytics.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://leakcheck.net"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://leakcheck.net/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/public": {
+      "get": {
+        "summary": "Check user data",
+        "description": "Retrieve user data from various online sources by providing a search query. Returns found records with available fields and data sources.",
+        "operationId": "checkUserData",
+        "parameters": [
+          {
+            "name": "check",
+            "in": "query",
+            "description": "The identifier to search for (e.g., email, username, phone number)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "example"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with user data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates if the request was successful"
+                    },
+                    "found": {
+                      "type": "integer",
+                      "description": "Number of records found matching the query"
+                    },
+                    "fields": {
+                      "type": "array",
+                      "description": "List of available data fields found in the results",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "password",
+                          "gender",
+                          "zip",
+                          "first_name",
+                          "ip1",
+                          "address",
+                          "origin",
+                          "middle_name",
+                          "profile_name",
+                          "telegram_id",
+                          "state",
+                          "ip2",
+                          "username",
+                          "dob",
+                          "last_name",
+                          "phone",
+                          "name",
+                          "ip",
+                          "city",
+                          "country"
+                        ]
+                      }
+                    },
+                    "sources": {
+                      "type": "array",
+                      "description": "List of data sources where the information was found",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the data source"
+                          },
+                          "date": {
+                            "type": "string",
+                            "description": "Date of the data breach or collection in YYYY-MM format",
+                            "pattern": "^\\d{4}-\\d{2}$"
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "found",
+                    "fields",
+                    "sources"
+                  ]
+                },
+                "example": {
+                  "success": true,
+                  "found": 995,
+                  "fields": [
+                    "password",
+                    "gender",
+                    "zip",
+                    "first_name",
+                    "ip1",
+                    "address",
+                    "origin",
+                    "middle_name",
+                    "profile_name",
+                    "telegram_id",
+                    "state",
+                    "ip2",
+                    "username",
+                    "dob",
+                    "last_name",
+                    "phone",
+                    "name",
+                    "ip",
+                    "city",
+                    "country"
+                  ],
+                  "sources": [
+                    {
+                      "name": "Twitter.com (scraping data)",
+                      "date": "2022-01"
+                    },
+                    {
+                      "name": "VimeWorld.ru",
+                      "date": "2017-11"
+                    },
+                    {
+                      "name": "Canva.com",
+                      "date": "2019-05"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid or missing parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error message describing what went wrong"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No data found for the provided query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "found": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "fields": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": []
+                    },
+                    "sources": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "example": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User Data"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "User Data",
+      "description": "Operations for checking and retrieving user data from various sources"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "user_data": {
+      "USER_DATA00": {
+        "date": "s14",
+        "name": "s15"
+      },
+      "USER_DATA01": {
+        "date": "s28",
+        "name": "s29"
+      },
+      "USER_DATA02": {
+        "date": "s3c",
+        "name": "s3d"
+      }
+    }
+  },
+  "new": {
+    "user_data": {
+      "user_data_ref01": {
+        "date": "s50",
+        "name": "s51"
+      }
+    }
+  }
+}
