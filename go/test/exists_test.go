@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/user-data-scraper-sdk"
+	sdk "github.com/voxgig-sdk/user-data-scraper-sdk/go"
 )
 
 func TestExists(t *testing.T) {

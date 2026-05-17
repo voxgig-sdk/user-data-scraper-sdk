@@ -1,10 +1,10 @@
 package voxgiguserdatascrapersdk
 
 import (
-	"github.com/voxgig-sdk/user-data-scraper-sdk/core"
-	"github.com/voxgig-sdk/user-data-scraper-sdk/entity"
-	"github.com/voxgig-sdk/user-data-scraper-sdk/feature"
-	_ "github.com/voxgig-sdk/user-data-scraper-sdk/utility"
+	"github.com/voxgig-sdk/user-data-scraper-sdk/go/core"
+	"github.com/voxgig-sdk/user-data-scraper-sdk/go/entity"
+	"github.com/voxgig-sdk/user-data-scraper-sdk/go/feature"
+	_ "github.com/voxgig-sdk/user-data-scraper-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

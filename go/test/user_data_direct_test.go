@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/user-data-scraper-sdk"
-	"github.com/voxgig-sdk/user-data-scraper-sdk/core"
+	sdk "github.com/voxgig-sdk/user-data-scraper-sdk/go"
+	"github.com/voxgig-sdk/user-data-scraper-sdk/go/core"
 )
 
 func TestUserDataDirect(t *testing.T) {

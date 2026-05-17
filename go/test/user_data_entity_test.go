@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/user-data-scraper-sdk"
-	"github.com/voxgig-sdk/user-data-scraper-sdk/core"
+	sdk "github.com/voxgig-sdk/user-data-scraper-sdk/go"
+	"github.com/voxgig-sdk/user-data-scraper-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/user-data-scraper-sdk/go/utility/struct"
 )
 
 func TestUserDataEntity(t *testing.T) {

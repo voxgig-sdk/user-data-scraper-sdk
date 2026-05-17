@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/user-data-scraper-sdk/core"
+	"github.com/voxgig-sdk/user-data-scraper-sdk/go/core"
 )
 
 type BaseFeature struct {
