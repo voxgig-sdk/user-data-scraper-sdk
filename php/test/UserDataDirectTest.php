@@ -68,14 +68,12 @@ function user_data_direct_setup($mockres)
     $env = Runner::env_override([
         "USERDATASCRAPER_TEST_USER_DATA_ENTID" => [],
         "USERDATASCRAPER_TEST_LIVE" => "FALSE",
-        "USERDATASCRAPER_APIKEY" => "NONE",
     ]);
 
     $live = $env["USERDATASCRAPER_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["USERDATASCRAPER_APIKEY"],
         ];
         $client = new UserDataScraperSDK($merged_opts);
         return [

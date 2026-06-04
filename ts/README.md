@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { UserDataScraperSDK } from 'user-data-scraper'
 
-const client = new UserDataScraperSDK({
-  apikey: process.env.USER-DATA-SCRAPER_APIKEY,
-})
+const client = new UserDataScraperSDK({})
 ```
 
 ### 2. List userdatas
@@ -84,7 +82,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new UserDataScraperSDK({ apikey: '...' })
+const client = new UserDataScraperSDK()
 const testClient = client.tester()
 ```
 
@@ -120,7 +118,6 @@ const logger = {
 }
 
 const client = new UserDataScraperSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -131,7 +128,6 @@ Create a `.env.local` file at the project root:
 
 ```
 USER-DATA-SCRAPER_TEST_LIVE=TRUE
-USER-DATA-SCRAPER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -149,7 +145,6 @@ cd ts && npm test
 
 ```ts
 new UserDataScraperSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -160,7 +155,6 @@ new UserDataScraperSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

@@ -92,7 +92,6 @@ def _user_data_basic_setup(extra):
         "USERDATASCRAPER_TEST_USER_DATA_ENTID": idmap,
         "USERDATASCRAPER_TEST_LIVE": "FALSE",
         "USERDATASCRAPER_TEST_EXPLAIN": "FALSE",
-        "USERDATASCRAPER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _user_data_basic_setup(extra):
     if env.get("USERDATASCRAPER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("USERDATASCRAPER_APIKEY"),
             },
             extra or {},
         ])

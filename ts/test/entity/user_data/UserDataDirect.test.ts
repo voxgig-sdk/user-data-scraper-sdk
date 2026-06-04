@@ -82,14 +82,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'USERDATASCRAPER_TEST_USER_DATA_ENTID': {},
     'USERDATASCRAPER_TEST_LIVE': 'FALSE',
-    'USERDATASCRAPER_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.USERDATASCRAPER_TEST_LIVE
 
   if (live) {
     const client = new UserDataScraperSDK({
-      apikey: env.USERDATASCRAPER_APIKEY,
     })
 
     let idmap: any = env['USERDATASCRAPER_TEST_USER_DATA_ENTID']
