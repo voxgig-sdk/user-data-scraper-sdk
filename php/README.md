@@ -10,7 +10,7 @@ The PHP SDK for the UserDataScraper API — an entity-oriented client using PHP 
 
 ## Install
 ```bash
-composer require voxgig/user-data-scraper-sdk
+composer require voxgig-sdk/user-data-scraper
 ```
 
 

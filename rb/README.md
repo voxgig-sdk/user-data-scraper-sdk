@@ -10,13 +10,13 @@ The Ruby SDK for the UserDataScraper API — an entity-oriented client using idi
 
 ## Install
 ```bash
-gem install user-data-scraper-sdk
+gem install voxgig-sdk-user-data-scraper
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "user-data-scraper-sdk"
+gem "voxgig-sdk-user-data-scraper"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The Lua SDK for the UserDataScraper API — an entity-oriented client using Lua 
 
 ## Install
 ```bash
-luarocks install user-data-scraper-sdk
+luarocks install voxgig-sdk-user-data-scraper
 ```
 
 If the module is not yet published, add the source directory to

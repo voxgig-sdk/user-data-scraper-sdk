@@ -10,7 +10,7 @@ The Python SDK for the UserDataScraper API — an entity-oriented client followi
 
 ## Install
 ```bash
-pip install user-data-scraper-sdk
+pip install voxgig-sdk-user-data-scraper
 ```
 
 Or install from source:

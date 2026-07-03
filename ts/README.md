@@ -10,7 +10,7 @@ The TypeScript SDK for the UserDataScraper API — a type-safe, entity-oriented 
 
 ## Install
 ```bash
-npm install user-data-scraper
+npm install @voxgig-sdk/user-data-scraper
 ```
 ## Tutorial: your first API call
 
