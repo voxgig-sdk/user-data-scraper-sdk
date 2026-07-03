@@ -1,25 +1,8 @@
 # UserDataScraper SDK
 
-Check whether an email address appears in known public data breaches via LeakCheck
+User Data Scraper client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About User Data Scraper
-
-[LeakCheck](https://leakcheck.io/) is a data-breach search service that has been running since 2018. It maintains an index of credentials and personal data extracted from publicly disclosed breaches and lets you check whether a given identifier (typically an email address) appears in any of them.
-
-This SDK wraps the lightweight public lookup endpoint exposed at `https://leakcheck.net/api/public`, which accepts an email address via the `check` query parameter and returns a JSON response indicating whether the address was found in known breach sources.
-
-What you can do with this API:
-
-- Submit an email address and learn whether it is present in LeakCheck's breach index.
-- Receive minimal breach metadata associated with that address, when available.
-
-Operational notes:
-
-- The public endpoint does not require an API key, but heavier or commercial use (bulk lookups, username / keyword / password search, reverse search) requires a paid LeakCheck subscription.
-- LeakCheck states that it does not log user searches and serves traffic over TLS.
-- CORS is not enabled on the public endpoint, so requests are best made from a server-side environment.
 
 ## Try it
 
@@ -53,29 +36,31 @@ gem install user-data-scraper-sdk
 luarocks install user-data-scraper-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { UserDataScraperSDK } from 'user-data-scraper'
 
-const client = new UserDataScraperSDK({})
+const client = new UserDataScraperSDK({
+  apikey: process.env.USER-DATA-SCRAPER_APIKEY,
+})
 
 // List all userdatas
 const userdatas = await client.UserData().list()
+console.log(userdatas.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -105,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **UserData** | Breach-lookup results for a single identifier (typically an email address) checked against LeakCheck's index, returned by `GET /public?check={email}`. | `/public` |
+| **UserData** |  | `/public` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -115,12 +100,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from userdatascraper_sdk import UserDataScraperSDK
 
-client = UserDataScraperSDK({})
+client = UserDataScraperSDK({
+    "apikey": os.environ.get("USER-DATA-SCRAPER_APIKEY"),
+})
 
 # List all userdatas
-userdatas, err = client.UserData(None).list(None, None)
+userdatas, err = client.UserData().list()
+print(userdatas)
 ```
 
 ### PHP
@@ -129,10 +118,13 @@ userdatas, err = client.UserData(None).list(None, None)
 <?php
 require_once 'userdatascraper_sdk.php';
 
-$client = new UserDataScraperSDK([]);
+$client = new UserDataScraperSDK([
+    "apikey" => getenv("USER-DATA-SCRAPER_APIKEY"),
+]);
 
 // List all userdatas
-[$userdatas, $err] = $client->UserData(null)->list(null, null);
+[$userdatas, $err] = $client->UserData()->list();
+print_r($userdatas);
 ```
 
 ### Golang
@@ -140,10 +132,13 @@ $client = new UserDataScraperSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/user-data-scraper-sdk/go"
 
-client := sdk.NewUserDataScraperSDK(map[string]any{})
+client := sdk.NewUserDataScraperSDK(map[string]any{
+    "apikey": os.Getenv("USER-DATA-SCRAPER_APIKEY"),
+})
 
 // List all userdatas
 userdatas, err := client.UserData(nil).List(nil, nil)
+fmt.Println(userdatas)
 ```
 
 ### Ruby
@@ -151,10 +146,13 @@ userdatas, err := client.UserData(nil).List(nil, nil)
 ```ruby
 require_relative "UserDataScraper_sdk"
 
-client = UserDataScraperSDK.new({})
+client = UserDataScraperSDK.new({
+  "apikey" => ENV["USER-DATA-SCRAPER_APIKEY"],
+})
 
 # List all userdatas
-userdatas, err = client.UserData(nil).list(nil, nil)
+userdatas, err = client.UserData().list
+puts userdatas
 ```
 
 ### Lua
@@ -162,10 +160,13 @@ userdatas, err = client.UserData(nil).list(nil, nil)
 ```lua
 local sdk = require("user-data-scraper_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("USER-DATA-SCRAPER_APIKEY"),
+})
 
 -- List all userdatas
-local userdatas, err = client:UserData(nil):list(nil, nil)
+local userdatas, err = client:UserData():list()
+print(userdatas)
 ```
 
 ## Unit testing in offline mode
@@ -184,25 +185,21 @@ const result = await client.UserData().load({ id: 'test01' })
 ### Python
 
 ```python
-client = UserDataScraperSDK.test(None, None)
-result, err = client.UserData(None).load(
-    {"id": "test01"}, None
-)
+client = UserDataScraperSDK.test()
+result, err = client.UserData().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = UserDataScraperSDK::test(null, null);
-[$result, $err] = $client->UserData(null)->load(
-    ["id" => "test01"], null
-);
+$client = UserDataScraperSDK::test();
+[$result, $err] = $client->UserData()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.UserData(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -211,19 +208,15 @@ result, err := client.UserData(nil).Load(
 ### Ruby
 
 ```ruby
-client = UserDataScraperSDK.test(nil, nil)
-result, err = client.UserData(nil).load(
-  { "id" => "test01" }, nil
-)
+client = UserDataScraperSDK.test
+result, err = client.UserData().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:UserData(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:UserData():load({ id = "test01" })
 ```
 
 ## How it works
@@ -327,16 +320,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the User Data Scraper
-
-- Upstream: [https://leakcheck.io/](https://leakcheck.io/)
-- API docs: [https://leakcheck.net/api](https://leakcheck.net/api)
-
-- Operated by [LeakCheck](https://leakcheck.io/) as a proprietary commercial service.
-- The public endpoint at `https://leakcheck.net/api/public` returns limited breach metadata and is intended for casual / individual lookups.
-- Full programmatic access, bulk lookups, and richer breach data require a paid LeakCheck subscription.
-- Treat returned data as sensitive; do not redistribute breach indicators without considering applicable privacy / data-protection law.
 
 ---
 

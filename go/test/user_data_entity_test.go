@@ -119,6 +119,7 @@ func user_dataBasicSetup(extra map[string]any) *entityTestSetup {
 		"USERDATASCRAPER_TEST_USER_DATA_ENTID": idmap,
 		"USERDATASCRAPER_TEST_LIVE":      "FALSE",
 		"USERDATASCRAPER_TEST_EXPLAIN":   "FALSE",
+		"USERDATASCRAPER_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["USERDATASCRAPER_TEST_USER_DATA_ENTID"])
@@ -129,6 +130,7 @@ func user_dataBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["USERDATASCRAPER_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["USERDATASCRAPER_APIKEY"],
 			},
 			extra,
 		})

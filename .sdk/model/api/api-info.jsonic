@@ -16,32 +16,7 @@ main: {
       ]
       title: "User Data Scraper"
       version: "1.0.0"
-      tagline: "Check whether an email address appears in known public data breaches via LeakCheck"
-      homepage: "https://leakcheck.io/"
-      docs_url: "https://leakcheck.net/api"
-      license_short: "Proprietary service; public lookup endpoint usable without authentication, subject to LeakCheck's terms."
-      license_md: `- Operated by [LeakCheck](https://leakcheck.io/) as a proprietary commercial service.
-- The public endpoint at \`https://leakcheck.net/api/public\` returns limited breach metadata and is intended for casual / individual lookups.
-- Full programmatic access, bulk lookups, and richer breach data require a paid LeakCheck subscription.
-- Treat returned data as sensitive; do not redistribute breach indicators without considering applicable privacy / data-protection law.`
-      about_md: `[LeakCheck](https://leakcheck.io/) is a data-breach search service that has been running since 2018. It maintains an index of credentials and personal data extracted from publicly disclosed breaches and lets you check whether a given identifier (typically an email address) appears in any of them.
-
-This SDK wraps the lightweight public lookup endpoint exposed at \`https://leakcheck.net/api/public\`, which accepts an email address via the \`check\` query parameter and returns a JSON response indicating whether the address was found in known breach sources.
-
-What you can do with this API:
-
-- Submit an email address and learn whether it is present in LeakCheck's breach index.
-- Receive minimal breach metadata associated with that address, when available.
-
-Operational notes:
-
-- The public endpoint does not require an API key, but heavier or commercial use (bulk lookups, username / keyword / password search, reverse search) requires a paid LeakCheck subscription.
-- LeakCheck states that it does not log user searches and serves traffic over TLS.
-- CORS is not enabled on the public endpoint, so requests are best made from a server-side environment.`
-      entity_desc: {
-        user_data: "Breach-lookup results for a single identifier (typically an email address) checked against LeakCheck's index, returned by `GET /public?check={email}`."
-      }
-      auth: false
     }
   }
 }
+

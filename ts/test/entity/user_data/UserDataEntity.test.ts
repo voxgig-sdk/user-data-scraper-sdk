@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'USER_DATA_SCRAPER_TEST_USER_DATA_ENTID': idmap,
     'USER_DATA_SCRAPER_TEST_LIVE': 'FALSE',
     'USER_DATA_SCRAPER_TEST_EXPLAIN': 'FALSE',
+    'USER_DATA_SCRAPER_APIKEY': 'NONE',
   })
 
   idmap = env['USER_DATA_SCRAPER_TEST_USER_DATA_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new UserDataScraperSDK(merge([
       {
+        apikey: env.USER_DATA_SCRAPER_APIKEY,
       },
       extra
     ]))
