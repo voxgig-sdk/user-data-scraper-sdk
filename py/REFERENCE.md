@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## UserDataEntity
 
 ```python
-user_data = client.user_data
+user_data = client.UserData()
 ```
 
 ### Fields
@@ -97,7 +97,9 @@ user_data = client.user_data
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.user_data.list({})
+results = client.UserData().list({})
+for user_data in results:
+    print(user_data)
 ```
 
 ### Common Methods

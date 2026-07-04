@@ -26,9 +26,11 @@ import { UserDataScraperSDK } from '@voxgig-sdk/user-data-scraper'
 
 const client = new UserDataScraperSDK()
 
-// List all userdatas
-const userdatas = await client.userdata.list()
-console.log(userdatas.data)
+// List all userdatas (returns UserData[])
+const userdatas = await client.UserData().list()
+for (const userdata of userdatas) {
+  console.log(userdata)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,9 +85,10 @@ from userdatascraper_sdk import UserDataScraperSDK
 
 client = UserDataScraperSDK()
 
-# List all userdatas
-userdatas = client.userdata.list()
-print(userdatas)
+# List all userdatas (returns a list, raises on error)
+userdatas = client.UserData().list({})
+for userdata in userdatas:
+    print(userdata)
 ```
 
 ### PHP
@@ -96,8 +99,8 @@ require_once 'userdatascraper_sdk.php';
 
 $client = new UserDataScraperSDK();
 
-// List all userdatas (throws on error)
-$userdatas = $client->userdata()->list();
+// List all userdatas (returns an array; throws on error)
+$userdatas = $client->UserData()->list();
 print_r($userdatas);
 ```
 
@@ -120,8 +123,8 @@ require_relative "UserDataScraper_sdk"
 
 client = UserDataScraperSDK.new
 
-# List all userdatas
-userdatas = client.userdata.list
+# List all userdatas (returns an Array; raises on error)
+userdatas = client.UserData.list
 puts userdatas
 ```
 
@@ -133,7 +136,7 @@ local sdk = require("user-data-scraper_sdk")
 local client = sdk.new()
 
 -- List all userdatas
-local userdatas, err = client:userdata():list()
+local userdatas, err = client:UserData():list()
 print(userdatas)
 ```
 
@@ -146,22 +149,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = UserDataScraperSDK.test()
-const result = await client.userdata.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const userdata = await client.UserData().load({ id: 'test01' })
+// userdata is a bare UserData populated with mock data
+console.log(userdata)
 ```
 
 ### Python
 
 ```python
 client = UserDataScraperSDK.test()
-result = client.userdata.load({"id": "test01"})
+userdata = client.UserData().load({"id": "test01"})
+print(userdata)
 ```
 
 ### PHP
 
 ```php
-$client = UserDataScraperSDK::test();
-$result = $client->userdata()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = UserDataScraperSDK::test([
+    "entity" => ["userdata" => ["test01" => ["id" => "test01"]]],
+]);
+$userdata = $client->UserData()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -176,15 +184,18 @@ result, err := client.UserData(nil).Load(
 ### Ruby
 
 ```ruby
-client = UserDataScraperSDK.test
-result = client.userdata.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = UserDataScraperSDK.test({
+  "entity" => { "userdata" => { "test01" => { "id" => "test01" } } },
+})
+userdata = client.UserData.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:userdata():load({ id = "test01" })
+local result, err = client:UserData():load({ id = "test01" })
 ```
 
 ## How it works
@@ -232,6 +243,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

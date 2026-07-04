@@ -109,7 +109,7 @@ Alias for `UserDataScraperSDK.test()`.
 ## UserDataEntity
 
 ```ts
-const user_data = client.user_data
+const user_data = client.UserData()
 ```
 
 ### Fields
@@ -126,7 +126,7 @@ const user_data = client.user_data
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.user_data.list()
+const results = await client.UserData().list()
 ```
 
 ### Common Methods

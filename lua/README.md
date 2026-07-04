@@ -31,17 +31,17 @@ local sdk = require("user-data-scraper_sdk")
 local client = sdk.new()
 ```
 
-### 2. List userdatas
+### 2. List userdata records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:userdata():list()
+local userdatas, err = client:UserData():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(userdatas) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:userdata():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:UserData():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -167,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `UserData` | `(data) -> UserDataEntity` | Create a UserData entity instance. |
+| `UserData` | `(data) -> UserDataEntity` | Create an UserData entity instance. |
 
 ### Entity interface
 
@@ -189,17 +189,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local user_data, err = client:UserData():load({ id = "example_id" })
+    if err then error(err) end
+    -- user_data is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -221,7 +226,7 @@ API path: `/public`
 
 ### UserData
 
-Create an instance: `const user_data = client.user_data`
+Create an instance: `local user_data = client:UserData(nil)`
 
 #### Operations
 
@@ -238,8 +243,8 @@ Create an instance: `const user_data = client.user_data`
 
 #### Example: List
 
-```ts
-const user_datas = await client.user_data.list()
+```lua
+local user_datas, err = client:UserData():list()
 ```
 
 
@@ -314,7 +319,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local userdata = client:userdata()
+local userdata = client:UserData()
 userdata:load({ id = "example_id" })
 
 -- userdata:data_get() now returns the loaded userdata data

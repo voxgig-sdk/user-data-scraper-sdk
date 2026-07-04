@@ -31,14 +31,16 @@ from userdatascraper_sdk import UserDataScraperSDK
 client = UserDataScraperSDK()
 ```
 
-### 2. List userdatas
+### 2. List userdata records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.userdata.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    userdatas = client.UserData().list({})
+    for userdata in userdatas:
+        print(userdata)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = UserDataScraperSDK.test()
 
-result = client.userdata.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+userdata = client.UserData().load({"id": "test01"})
+# userdata contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -163,7 +166,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `UserData` | `(data) -> UserDataEntity` | Create a UserData entity instance. |
+| `UserData` | `(data) -> UserDataEntity` | Create an UserData entity instance. |
 
 ### Entity interface
 
@@ -221,7 +224,7 @@ API path: `/public`
 
 ### UserData
 
-Create an instance: `const user_data = client.user_data`
+Create an instance: `user_data = client.UserData()`
 
 #### Operations
 
@@ -238,8 +241,8 @@ Create an instance: `const user_data = client.user_data`
 
 #### Example: List
 
-```ts
-const user_datas = await client.user_data.list()
+```python
+user_datas = client.UserData().list({})
 ```
 
 
@@ -313,7 +316,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-userdata = client.userdata
+userdata = client.UserData()
 userdata.load({"id": "example_id"})
 
 # userdata.data_get() now returns the loaded userdata data

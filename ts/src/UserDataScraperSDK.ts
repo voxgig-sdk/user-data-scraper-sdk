@@ -204,14 +204,7 @@ class UserDataScraperSDK {
 
 
 
-  _user_data?: UserDataEntity
-
-  // Idiomatic facade: `client.user_data.list()` / `client.user_data.load({ id })`.
-  get user_data(): UserDataEntity {
-    return (this._user_data ??= new UserDataEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.user_data` instead. */
+  // Entity access: `client.UserData().list()` / `client.UserData().load({ id })`.
   UserData(data?: any) {
     const self = this
     return new UserDataEntity(self,data)

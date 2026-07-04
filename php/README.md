@@ -29,18 +29,16 @@ require_once 'userdatascraper_sdk.php';
 $client = new UserDataScraperSDK();
 ```
 
-### 2. List userdatas
+### 2. List userdata records
 
 ```php
 try {
-    $result = $client->userdata()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of UserData records — iterate directly.
+    $userdatas = $client->UserData()->list();
+    foreach ($userdatas as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = UserDataScraperSDK::test();
+$client = UserDataScraperSDK::test([
+    "entity" => ["userdata" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->userdata()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$userdata = $client->UserData()->load(["id" => "test01"]);
+print_r($userdata);
 ```
 
 ### Use a custom fetch function
@@ -171,7 +173,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `UserData` | `($data): UserDataEntity` | Create a UserData entity instance. |
+| `UserData` | `($data): UserDataEntity` | Create an UserData entity instance. |
 
 ### Entity interface
 
@@ -229,7 +231,7 @@ API path: `/public`
 
 ### UserData
 
-Create an instance: `const user_data = client.user_data`
+Create an instance: `$user_data = $client->UserData();`
 
 #### Operations
 
@@ -246,8 +248,9 @@ Create an instance: `const user_data = client.user_data`
 
 #### Example: List
 
-```ts
-const user_datas = await client.user_data.list()
+```php
+// list() returns an array of UserData records (throws on error).
+$user_datas = $client->UserData()->list();
 ```
 
 
@@ -322,7 +325,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$userdata = $client->userdata();
+$userdata = $client->UserData();
 $userdata->load(["id" => "example_id"]);
 
 // $userdata->dataGet() now returns the loaded userdata data

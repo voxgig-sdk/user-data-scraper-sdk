@@ -28,16 +28,14 @@ require_relative "UserDataScraper_sdk"
 client = UserDataScraperSDK.new
 ```
 
-### 2. List userdatas
+### 2. List userdata records
 
 ```ruby
 begin
-  result = client.userdata.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of UserData records — iterate directly.
+  userdatas = client.UserData.list
+  userdatas.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = UserDataScraperSDK.test
+client = UserDataScraperSDK.test({
+  "entity" => { "userdata" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.userdata.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+userdata = client.UserData.load({ "id" => "test01" })
+puts userdata
 ```
 
 ### Use a custom fetch function
@@ -167,7 +169,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `UserData` | `(data) -> UserDataEntity` | Create a UserData entity instance. |
+| `UserData` | `(data) -> UserDataEntity` | Create an UserData entity instance. |
 
 ### Entity interface
 
@@ -224,7 +226,7 @@ API path: `/public`
 
 ### UserData
 
-Create an instance: `const user_data = client.user_data`
+Create an instance: `user_data = client.UserData`
 
 #### Operations
 
@@ -241,8 +243,9 @@ Create an instance: `const user_data = client.user_data`
 
 #### Example: List
 
-```ts
-const user_datas = await client.user_data.list()
+```ruby
+# list returns an Array of UserData records (raises on error).
+user_datas = client.UserData.list
 ```
 
 
@@ -317,7 +320,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-userdata = client.userdata
+userdata = client.UserData
 userdata.load({ "id" => "example_id" })
 
 # userdata.data_get now returns the loaded userdata data

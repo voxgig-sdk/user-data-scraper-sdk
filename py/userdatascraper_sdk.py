@@ -220,25 +220,15 @@ class UserDataScraperSDK:
         }
 
 
-    @property
-    def user_data(self):
-        """Idiomatic facade: client.user_data.list() / client.user_data.load({"id": ...})."""
-        from entity.user_data_entity import UserDataEntity
-        cached = getattr(self, "_user_data", None)
-        if cached is None:
-            cached = UserDataEntity(self, None)
-            self._user_data = cached
-        return cached
-
-    def UserData(self, data=None):
-        # Deprecated: use client.user_data instead.
+    def UserData(self, data=None) -> "UserDataEntity":
+        """Entity factory: client.UserData().list({}) / client.UserData().load({"id": ...})."""
         from entity.user_data_entity import UserDataEntity
         return UserDataEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "UserDataScraperSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class UserDataScraperSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.user_data_entity import UserDataEntity

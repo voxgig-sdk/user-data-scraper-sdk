@@ -233,10 +233,10 @@ class UserDataScraperSDK
 
     private $_user_data = null;
 
-    // Idiomatic facade: $client->user_data()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias UserData() (PHP method
-    // names are case-insensitive).
-    public function user_data($data = null)
+    // Canonical facade: $client->UserData()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->user_data()
+    // resolves here too.
+    public function UserData($data = null)
     {
         require_once __DIR__ . '/entity/user_data_entity.php';
         if ($data === null) {

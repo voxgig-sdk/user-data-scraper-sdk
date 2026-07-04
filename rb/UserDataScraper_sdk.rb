@@ -208,13 +208,7 @@ class UserDataScraperSDK
   end
 
 
-  # Idiomatic facade: client.user_data.list / client.user_data.load({ "id" => ... })
-  def user_data
-    require_relative 'entity/user_data_entity'
-    @user_data ||= UserDataEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.user_data instead.
+  # Canonical facade: client.UserData.list / client.UserData.load({ "id" => ... })
   def UserData(data = nil)
     require_relative 'entity/user_data_entity'
     UserDataEntity.new(self, data)

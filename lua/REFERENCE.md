@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## UserDataEntity
 
 ```lua
-local user_data = client:user_data(nil)
+local user_data = client:UserData(nil)
 ```
 
 ### Fields
@@ -100,7 +100,7 @@ local user_data = client:user_data(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:user_data():list()
+local results, err = client:UserData():list()
 ```
 
 ### Common Methods
