@@ -245,6 +245,9 @@ func (sdk *UserDataScraperSDK) Direct(fetchargs map[string]any) (map[string]any,
 }
 
 
+// UserData returns a UserData entity bound to this client.
+// Idiomatic usage: client.UserData(nil).List(nil, nil) or
+// client.UserData(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UserDataScraperSDK) UserData(data map[string]any) UserDataScraperEntity {
 	return NewUserDataEntityFunc(sdk, data)
 }

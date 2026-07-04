@@ -63,14 +63,12 @@ function user_data_direct_setup(mockres)
   local env = runner.env_override({
     ["USERDATASCRAPER_TEST_USER_DATA_ENTID"] = {},
     ["USERDATASCRAPER_TEST_LIVE"] = "FALSE",
-    ["USERDATASCRAPER_APIKEY"] = "NONE",
   })
 
   local live = env["USERDATASCRAPER_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["USERDATASCRAPER_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -50,8 +50,7 @@ class TestUserDataEntity:
         user_data_ref01_ent = client.UserData(None)
         user_data_ref01_match = {}
 
-        user_data_ref01_list_result, err = user_data_ref01_ent.list(user_data_ref01_match, None)
-        assert err is None
+        user_data_ref01_list_result = user_data_ref01_ent.list(user_data_ref01_match, None)
         assert isinstance(user_data_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _user_data_basic_setup(extra):
         "USERDATASCRAPER_TEST_USER_DATA_ENTID": idmap,
         "USERDATASCRAPER_TEST_LIVE": "FALSE",
         "USERDATASCRAPER_TEST_EXPLAIN": "FALSE",
-        "USERDATASCRAPER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _user_data_basic_setup(extra):
     if env.get("USERDATASCRAPER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("USERDATASCRAPER_APIKEY"),
             },
             extra or {},
         ])

@@ -93,14 +93,12 @@ func user_dataDirectSetup(mockres any) *user_dataDirectSetupResult {
 	env := envOverride(map[string]any{
 		"USERDATASCRAPER_TEST_USER_DATA_ENTID": map[string]any{},
 		"USERDATASCRAPER_TEST_LIVE":    "FALSE",
-		"USERDATASCRAPER_APIKEY":       "NONE",
 	})
 
 	live := env["USERDATASCRAPER_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["USERDATASCRAPER_APIKEY"],
 		}
 		client := sdk.NewUserDataScraperSDK(mergedOpts)
 

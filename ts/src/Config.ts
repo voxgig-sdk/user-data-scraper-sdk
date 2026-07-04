@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://leakcheck.net/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

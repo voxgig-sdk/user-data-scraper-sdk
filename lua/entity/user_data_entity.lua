@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch UserDataListMatch
+---@param ctrl? table
+---@return UserData[]
+---@return string? err
 function UserDataEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

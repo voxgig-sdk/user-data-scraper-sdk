@@ -85,6 +85,27 @@ func (e *UserDataEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an UserData; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *UserDataEntity) DataTyped(data ...UserData) UserData {
+	if len(data) > 0 {
+		return typedFrom[UserData](e.Data(asMap(data[0])))
+	}
+	return typedFrom[UserData](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through UserData (all fields
+// optional at the wire level).
+func (e *UserDataEntity) MatchTyped(match ...UserData) UserData {
+	if len(match) > 0 {
+		return typedFrom[UserData](e.Match(asMap(match[0])))
+	}
+	return typedFrom[UserData](e.Match())
+}
+
 func (e *UserDataEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *UserDataEntity) List(reqmatch map[string]any, ctrl map[string]any) (any
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// UserDataListMatch and returns []UserData. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *UserDataEntity) ListTyped(reqmatch UserDataListMatch, ctrl map[string]any) ([]UserData, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[UserData](res), nil
 }
 
 

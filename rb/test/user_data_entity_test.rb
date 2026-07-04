@@ -43,8 +43,7 @@ class UserDataEntityTest < Minitest::Test
     user_data_ref01_ent = client.UserData(nil)
     user_data_ref01_match = {}
 
-    user_data_ref01_list_result, err = user_data_ref01_ent.list(user_data_ref01_match, nil)
-    assert_nil err
+    user_data_ref01_list_result = user_data_ref01_ent.list(user_data_ref01_match, nil)
     assert user_data_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def user_data_basic_setup(extra)
     "USERDATASCRAPER_TEST_USER_DATA_ENTID" => idmap,
     "USERDATASCRAPER_TEST_LIVE" => "FALSE",
     "USERDATASCRAPER_TEST_EXPLAIN" => "FALSE",
-    "USERDATASCRAPER_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def user_data_basic_setup(extra)
   if env["USERDATASCRAPER_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["USERDATASCRAPER_APIKEY"],
       },
       extra || {},
     ])

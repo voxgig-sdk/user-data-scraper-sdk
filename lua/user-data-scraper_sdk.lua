@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:user_data():list() / client:user_data():load({ id = ... })
+function UserDataScraperSDK:user_data(data)
+  local EntityMod = require("entity.user_data_entity")
+  if data == nil then
+    if self._user_data == nil then
+      self._user_data = EntityMod.new(self, nil)
+    end
+    return self._user_data
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:user_data() instead.
 function UserDataScraperSDK:UserData(data)
   local EntityMod = require("entity.user_data_entity")
   return EntityMod.new(self, data)
