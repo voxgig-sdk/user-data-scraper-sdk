@@ -8,7 +8,7 @@ Complete API reference for the UserDataScraper Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'user-data-scraper_sdk'
+require_relative 'UserDataScraper_sdk'
 
 client = UserDataScraperSDK.new(options)
 ```
@@ -93,17 +93,17 @@ user_data = client.UserData
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
+| `date` | `String` | No |  |
+| `name` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.UserData.list(nil)
+results = client.UserData.list
 ```
 
 ### Common Methods

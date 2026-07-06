@@ -21,7 +21,7 @@ UserData = Struct.new(
   keyword_init: true
 )
 
-# Match filter for UserData#list (any subset of UserData fields).
+# Request payload for UserData#list.
 #
 # @!attribute [rw] date
 #   @return [String, nil]

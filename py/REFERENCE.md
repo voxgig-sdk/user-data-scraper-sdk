@@ -8,7 +8,7 @@ Complete API reference for the UserDataScraper Python SDK.
 ### Constructor
 
 ```python
-from user-data-scraper_sdk import UserDataScraperSDK
+from userdatascraper_sdk import UserDataScraperSDK
 
 client = UserDataScraperSDK(options)
 ```
@@ -87,17 +87,17 @@ user_data = client.UserData()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
+| `date` | `str` | No |  |
+| `name` | `str` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.UserData().list({})
+results = client.UserData().list()
 for user_data in results:
     print(user_data)
 ```

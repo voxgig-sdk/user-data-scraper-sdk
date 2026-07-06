@@ -14,8 +14,7 @@ type UserData struct {
 	Name string `json:"name"`
 }
 
-// UserDataListMatch mirrors the user_data fields as an all-optional match
-// filter (Go analog of Partial<UserData>).
+// UserDataListMatch is the typed request payload for UserData.ListTyped.
 type UserDataListMatch struct {
 	Date *string `json:"date,omitempty"`
 	Name *string `json:"name,omitempty"`

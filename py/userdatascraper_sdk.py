@@ -221,7 +221,7 @@ class UserDataScraperSDK:
 
 
     def UserData(self, data=None) -> "UserDataEntity":
-        """Entity factory: client.UserData().list({}) / client.UserData().load({"id": ...})."""
+        """Entity factory: client.UserData().list() / client.UserData().load({"id": ...})."""
         from entity.user_data_entity import UserDataEntity
         return UserDataEntity(self, data)
 

@@ -11,6 +11,8 @@
 ---@field name string
 
 ---@class UserDataListMatch
+---@field date? string
+---@field name? string
 
 local M = {}
 

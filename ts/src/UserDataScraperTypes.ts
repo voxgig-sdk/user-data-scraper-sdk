@@ -10,5 +10,8 @@ export interface UserData {
   name: string
 }
 
-export type UserDataListMatch = Partial<UserData>
+export interface UserDataListMatch {
+  date?: string
+  name?: string
+}
 

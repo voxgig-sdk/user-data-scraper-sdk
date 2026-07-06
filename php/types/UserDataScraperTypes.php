@@ -19,7 +19,7 @@ class UserData
     public string $name;
 }
 
-/** Match filter for UserData#list (any subset of UserData fields). */
+/** Request payload for UserData#list. */
 class UserDataListMatch
 {
     public ?string $date = null;

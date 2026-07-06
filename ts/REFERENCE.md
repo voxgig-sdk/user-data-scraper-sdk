@@ -116,8 +116,8 @@ const user_data = client.UserData()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
+| `date` | `string` | No |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
