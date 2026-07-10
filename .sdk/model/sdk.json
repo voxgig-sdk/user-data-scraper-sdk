@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -212,14 +209,17 @@
           "url": "https://leakcheck.net"
         },
         "description": "This API allows users to scrape and retrieve user data from various online sources. It gathers a wide range of user information including names, addresses, phone numbers, and more, which can be utilized for various applications and analytics.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://leakcheck.net/api"
           }
         ],
+        "summary": "This API allows users to scrape and retrieve user data from various online sources.",
         "title": "User Data Scraper",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://leakcheck.net"
       },
       "option": {},
       "target": {
@@ -272,6 +272,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -322,6 +325,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

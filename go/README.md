@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // List userdata records — the value is the array of records itself.
-    userdatas, err := client.UserData(nil).List(nil, nil)
+    // List userData records — the value is the array of records itself.
+    userDatas, err := client.UserData(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range userdatas.([]any) {
+    for _, item := range userDatas.([]any) {
         fmt.Println(item)
     }
 }
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-userdata, err := client.UserData(nil).List(
+userData, err := client.UserData(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(userdata) // the returned mock data
+fmt.Println(userData) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -247,9 +247,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    userdata, err := client.UserData(nil).List(map[string]any{/* fields */}, nil)
+    userData, err := client.UserData(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // userdata is the returned record
+    // userData is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -274,7 +274,7 @@ API path: `/public`
 
 ### UserData
 
-Create an instance: `user_data := client.UserData(nil)`
+Create an instance: `userData := client.UserData(nil)`
 
 #### Operations
 
@@ -292,11 +292,11 @@ Create an instance: `user_data := client.UserData(nil)`
 #### Example: List
 
 ```go
-user_datas, err := client.UserData(nil).List(nil, nil)
+userDatas, err := client.UserData(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(user_datas) // the array of records
+fmt.Println(userDatas) // the array of records
 ```
 
 

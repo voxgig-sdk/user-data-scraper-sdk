@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## UserDataEntity
 
 ```go
-user_data := client.UserData(nil)
+userData := client.UserData(nil)
+fmt.Println(userData.GetName()) // "user_data"
 ```
 
 ### Fields
@@ -108,6 +109,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.UserData(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

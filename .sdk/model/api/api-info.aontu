@@ -15,9 +15,9 @@ main: {
           url: "https://leakcheck.net/api"
         }
       ]
+      summary: "This API allows users to scrape and retrieve user data from various online sources."
       title: "User Data Scraper"
       version: "1.0.0"
+      website: "https://leakcheck.net"
     }
   }
-}
-
