@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- UserDataScraper SDK exists test
 
 local sdk = require("user-data-scraper_sdk")
 
