@@ -60,11 +60,11 @@ def user_data_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "USERDATASCRAPER_TEST_USER_DATA_ENTID" => {},
-    "USERDATASCRAPER_TEST_LIVE" => "FALSE",
+    "USER_DATA_SCRAPER_TEST_USER_DATA_ENTID" => {},
+    "USER_DATA_SCRAPER_TEST_LIVE" => "FALSE",
   })
 
-  live = env["USERDATASCRAPER_TEST_LIVE"] == "TRUE"
+  live = env["USER_DATA_SCRAPER_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

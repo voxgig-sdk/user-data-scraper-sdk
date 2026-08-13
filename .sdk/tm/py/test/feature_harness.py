@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import UserDataScraperControl
-from core.error import UserDataScraperError
-from core.result import UserDataScraperResult
-from core.spec import UserDataScraperSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import UserDataScraperControl
+from projectname_sdk.core.error import UserDataScraperError
+from projectname_sdk.core.result import UserDataScraperResult
+from projectname_sdk.core.spec import UserDataScraperSpec
 
 
 # True when this SDK was generated with the named feature.

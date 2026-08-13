@@ -61,11 +61,11 @@ function user_data_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["USERDATASCRAPER_TEST_USER_DATA_ENTID"] = {},
-    ["USERDATASCRAPER_TEST_LIVE"] = "FALSE",
+    ["USER_DATA_SCRAPER_TEST_USER_DATA_ENTID"] = {},
+    ["USER_DATA_SCRAPER_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["USERDATASCRAPER_TEST_LIVE"] == "TRUE"
+  local live = env["USER_DATA_SCRAPER_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

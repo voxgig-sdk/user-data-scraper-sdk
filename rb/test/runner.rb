@@ -23,8 +23,8 @@ module UserDataScraperTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("USERDATASCRAPER_TEST_LIVE")
-    override = getenv("USERDATASCRAPER_TEST_OVERRIDE")
+    live = getenv("USER_DATA_SCRAPER_TEST_LIVE")
+    override = getenv("USER_DATA_SCRAPER_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module UserDataScraperTestRunner
       end
     end
 
-    explain = getenv("USERDATASCRAPER_TEST_EXPLAIN")
-    m["USERDATASCRAPER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("USER_DATA_SCRAPER_TEST_EXPLAIN")
+    m["USER_DATA_SCRAPER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

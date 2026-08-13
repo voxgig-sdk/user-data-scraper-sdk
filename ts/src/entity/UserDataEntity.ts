@@ -37,7 +37,7 @@ class UserDataEntity extends UserDataScraperEntityBase<UserData> {
 
 
 
-  async list(this: any, reqmatch?: UserDataListMatch, ctrl?: Control): Promise<UserData[]> {
+  async list(this: any, reqmatch?: UserDataListMatch, ctrl?: Control): Promise<UserDataEntity[]> {
 
     const utility = this._utility
 

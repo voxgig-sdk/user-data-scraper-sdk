@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import UserDataScraperSDK
-from core.error import UserDataScraperError
-from core.result import UserDataScraperResult
-from core.response import UserDataScraperResponse
-from core.spec import UserDataScraperSpec
-from feature.base_feature import UserDataScraperBaseFeature
+from projectname_sdk.core.error import UserDataScraperError
+from projectname_sdk.core.result import UserDataScraperResult
+from projectname_sdk.core.response import UserDataScraperResponse
+from projectname_sdk.core.spec import UserDataScraperSpec
+from projectname_sdk.feature.base_feature import UserDataScraperBaseFeature
 
 
 def _client():

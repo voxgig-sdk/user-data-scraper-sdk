@@ -26,8 +26,8 @@ import {
 describe('UserDataEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when USERDATASCRAPER_TEST_LIVE=TRUE.
-  afterEach(liveDelay('USERDATASCRAPER_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when USER_DATA_SCRAPER_TEST_LIVE=TRUE.
+  afterEach(liveDelay('USER_DATA_SCRAPER_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = UserDataScraperSDK.test()
@@ -63,7 +63,7 @@ describe('UserDataEntity', async () => {
     const user_data_ref01_ent = client.UserData()
     const user_data_ref01_match: any = {}
 
-    const user_data_ref01_list = await user_data_ref01_ent.list(user_data_ref01_match)
+    const user_data_ref01_list = (await user_data_ref01_ent.list(user_data_ref01_match)).map((e: any) => e.data())
 
 
   })

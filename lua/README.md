@@ -218,9 +218,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local user_data, err = client:UserData():load()
+    local user_data, err = client:UserData():list()
     if err then error(err) end
-    -- user_data is the loaded record
+    -- user_data is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.

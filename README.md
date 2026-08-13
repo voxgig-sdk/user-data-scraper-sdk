@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = UserDataScraperSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = UserDataScraperSDK.test({
+  entity: {
+    user_data: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const userdatas = await client.UserData().list()
-// userdatas is an array of bare UserData records populated with mock data
+// userdatas is an array of UserData entities, populated with mock data
+// — call userdatas[0].data() for the record itself
 console.log(userdatas)
 ```
 
@@ -110,7 +119,7 @@ import { UserDataScraperSDK } from '@voxgig-sdk/user-data-scraper'
 
 const client = new UserDataScraperSDK()
 
-// List all userdatas (returns UserData[])
+// List all userdatas (returns UserDataEntity[] — .data() for the record)
 const userdatas = await client.UserData().list()
 for (const userdata of userdatas) {
   console.log(userdata)
@@ -343,6 +352,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://leakcheck.net](https://leakcheck.net)
 

@@ -19,11 +19,15 @@ import {
 describe('UserDataDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when USERDATASCRAPER_TEST_LIVE=TRUE.
-  afterEach(liveDelay('USERDATASCRAPER_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when USER_DATA_SCRAPER_TEST_LIVE=TRUE.
+  afterEach(liveDelay('USER_DATA_SCRAPER_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new UserDataScraperSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -80,17 +84,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'USERDATASCRAPER_TEST_USER_DATA_ENTID': {},
-    'USERDATASCRAPER_TEST_LIVE': 'FALSE',
+    'USER_DATA_SCRAPER_TEST_USER_DATA_ENTID': {},
+    'USER_DATA_SCRAPER_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.USERDATASCRAPER_TEST_LIVE
+  const live = 'TRUE' === env.USER_DATA_SCRAPER_TEST_LIVE
 
   if (live) {
     const client = new UserDataScraperSDK({
     })
 
-    let idmap: any = env['USERDATASCRAPER_TEST_USER_DATA_ENTID']
+    let idmap: any = env['USER_DATA_SCRAPER_TEST_USER_DATA_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

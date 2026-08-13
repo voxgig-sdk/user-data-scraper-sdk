@@ -35,7 +35,9 @@ const client = new UserDataScraperSDK()
 
 ### 2. List userdata records
 
-`list()` resolves to an array of UserData objects — iterate it directly:
+`list()` resolves to an array of UserData ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const userdatas = await client.UserData().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = UserDataScraperSDK.test()
 
 const userdata = await client.UserData().list()
-// userdata is a bare entity populated with mock response data
+// userdata is the entity, populated with mock response data
+// — call userdata.data() for the record itself
 console.log(userdata)
 ```
 

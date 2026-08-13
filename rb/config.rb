@@ -61,6 +61,7 @@ module UserDataScraperConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/public",
                   "parts" => [

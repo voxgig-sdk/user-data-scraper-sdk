@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ UserDataScraperUtility::setRegistrar(function (UserDataScraperUtility $u): void 
     $u->prepare_params = [UserDataScraperPrepareParams::class, 'call'];
     $u->prepare_path = [UserDataScraperPreparePath::class, 'call'];
     $u->prepare_query = [UserDataScraperPrepareQuery::class, 'call'];
+    $u->graphql_body = [UserDataScraperGraphql::class, 'body'];
+    $u->graphql_errors = [UserDataScraperGraphql::class, 'errors'];
     $u->result_basic = [UserDataScraperResultBasic::class, 'call'];
     $u->result_body = [UserDataScraperResultBody::class, 'call'];
     $u->result_headers = [UserDataScraperResultHeaders::class, 'call'];

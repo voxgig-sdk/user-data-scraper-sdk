@@ -43,8 +43,8 @@ class UserDataScraperTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('USERDATASCRAPER_TEST_LIVE');
-        $override = self::getenv('USERDATASCRAPER_TEST_OVERRIDE');
+        $live = self::getenv('USER_DATA_SCRAPER_TEST_LIVE');
+        $override = self::getenv('USER_DATA_SCRAPER_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class UserDataScraperTestRunner
             }
         }
 
-        $explain = self::getenv('USERDATASCRAPER_TEST_EXPLAIN');
+        $explain = self::getenv('USER_DATA_SCRAPER_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['USERDATASCRAPER_TEST_EXPLAIN'] = $explain;
+            $m['USER_DATA_SCRAPER_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

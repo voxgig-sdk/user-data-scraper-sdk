@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from userdatascraper_sdk.utility.voxgig_struct import voxgig_struct as vs
 from userdatascraper_sdk import UserDataScraperSDK
-from core import helpers
+from userdatascraper_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _user_data_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "USERDATASCRAPER_TEST_USER_DATA_ENTID": {},
-        "USERDATASCRAPER_TEST_LIVE": "FALSE",
+        "USER_DATA_SCRAPER_TEST_USER_DATA_ENTID": {},
+        "USER_DATA_SCRAPER_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("USERDATASCRAPER_TEST_LIVE") == "TRUE"
+    live = env.get("USER_DATA_SCRAPER_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

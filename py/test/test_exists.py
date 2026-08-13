@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# UserDataScraper SDK exists test
 
 import pytest
 from userdatascraper_sdk import UserDataScraperSDK
