@@ -40,7 +40,7 @@ class UserDataScraperSDK
         $utility = new UserDataScraperUtility();
         $this->_utility = $utility;
 
-        $config = UserDataScraperConfig::make_config();
+        $config = UserDataScraperConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

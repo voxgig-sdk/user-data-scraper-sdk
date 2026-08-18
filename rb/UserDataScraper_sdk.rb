@@ -28,7 +28,7 @@ class UserDataScraperSDK
     utility = UserDataScraperUtility.new
     @_utility = utility
 
-    config = UserDataScraperConfig.make_config
+    config = UserDataScraperConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

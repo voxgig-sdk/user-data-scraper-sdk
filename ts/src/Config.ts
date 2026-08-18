@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://leakcheck.net/api',
+    base: "https://leakcheck.net/api",
 
     headers: {
       "content-type": "application/json"
@@ -55,18 +55,13 @@ class Config {
     "user_data": {
       "fields": [
         {
-          "active": true,
           "name": "date",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         }
       ],
       "name": "user_data",
@@ -76,11 +71,9 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "example",
                     "kind": "query",
                     "name": "check",
@@ -104,11 +97,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {

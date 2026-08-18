@@ -23,8 +23,8 @@ class UserDataScraperSDK:
         utility = UserDataScraperUtility()
         self._utility = utility
 
-        from userdatascraper_sdk.config import make_config
-        config = make_config()
+        from userdatascraper_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
