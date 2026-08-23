@@ -243,8 +243,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `name` |  |
+| `date` | Date of the data breach or collection in YYYY-MM format |
+| `name` | Name of the data source |
 
 Operations: List.
 
@@ -269,8 +269,8 @@ Create an instance: `user_data = client.UserData()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `str` |  |
-| `name` | `str` |  |
+| `date` | `str` | Date of the data breach or collection in YYYY-MM format |
+| `name` | `str` | Name of the data source |
 
 #### Example: List
 

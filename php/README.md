@@ -247,8 +247,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `name` |  |
+| `date` | Date of the data breach or collection in YYYY-MM format |
+| `name` | Name of the data source |
 
 Operations: List.
 
@@ -273,8 +273,8 @@ Create an instance: `$user_data = $client->UserData();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `name` | `string` |  |
+| `date` | `string` | Date of the data breach or collection in YYYY-MM format |
+| `name` | `string` | Name of the data source |
 
 #### Example: List
 

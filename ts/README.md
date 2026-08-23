@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -287,8 +287,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `name` |  |
+| `date` | Date of the data breach or collection in YYYY-MM format |
+| `name` | Name of the data source |
 
 Operations: list.
 
@@ -313,8 +313,8 @@ Create an instance: `const user_data = client.UserData()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `name` | `string` |  |
+| `date` | `string` | Date of the data breach or collection in YYYY-MM format |
+| `name` | `string` | Name of the data source |
 
 #### Example: List
 

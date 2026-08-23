@@ -93,8 +93,8 @@ user_data = client.UserData
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `String` | No |  |
-| `name` | `String` | Yes |  |
+| `date` | `String` | No | Date of the data breach or collection in YYYY-MM format |
+| `name` | `String` | Yes | Name of the data source |
 
 ### Operations
 

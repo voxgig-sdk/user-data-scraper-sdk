@@ -36,12 +36,14 @@
               "active": true,
               "name": "date",
               "req": false,
+              "short": "Date of the data breach or collection in YYYY-MM format",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Name of the data source",
               "type": "`$STRING`"
             }
           ],

@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "UserDataScraper",
+            "slug": "user-data-scraper",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -50,11 +53,13 @@ def make_config():
         "fields": [
           {
             "name": "date",
+            "short": "Date of the data breach or collection in YYYY-MM format",
             "type": "`$STRING`",
           },
           {
             "name": "name",
             "req": True,
+            "short": "Name of the data source",
             "type": "`$STRING`",
           },
         ],

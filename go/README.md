@@ -6,7 +6,7 @@ The Golang SDK for the UserDataScraper API — an entity-oriented client using s
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.UserData(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -260,8 +260,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"date"` |  |
-| `"name"` |  |
+| `"date"` | Date of the data breach or collection in YYYY-MM format |
+| `"name"` | Name of the data source |
 
 Operations: List.
 
@@ -286,8 +286,8 @@ Create an instance: `userData := client.UserData(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `name` | `string` |  |
+| `date` | `string` | Date of the data breach or collection in YYYY-MM format |
+| `name` | `string` | Name of the data source |
 
 #### Example: List
 

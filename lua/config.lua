@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "UserDataScraper",
+      slug = "user-data-scraper",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -29,11 +32,13 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "date",
+            ["short"] = "Date of the data breach or collection in YYYY-MM format",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
             ["req"] = true,
+            ["short"] = "Name of the data source",
             ["type"] = "`$STRING`",
           },
         },

@@ -116,8 +116,8 @@ const user_data = client.UserData()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | No |  |
-| `name` | `string` | Yes |  |
+| `date` | `string` | No | Date of the data breach or collection in YYYY-MM format |
+| `name` | `string` | Yes | Name of the data source |
 
 ### Operations
 

@@ -19,6 +19,9 @@ module UserDataScraperConfig
     {
       "main" => {
         "name" => "UserDataScraper",
+        "slug" => "user-data-scraper",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -41,11 +44,13 @@ module UserDataScraperConfig
           "fields" => [
             {
               "name" => "date",
+              "short" => "Date of the data breach or collection in YYYY-MM format",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
               "req" => true,
+              "short" => "Name of the data source",
               "type" => "`$STRING`",
             },
           ],

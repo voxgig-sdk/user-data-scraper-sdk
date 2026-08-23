@@ -87,8 +87,8 @@ user_data = client.UserData()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `str` | No |  |
-| `name` | `str` | Yes |  |
+| `date` | `str` | No | Date of the data breach or collection in YYYY-MM format |
+| `name` | `str` | Yes | Name of the data source |
 
 ### Operations
 

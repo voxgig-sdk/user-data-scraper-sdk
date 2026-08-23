@@ -8,11 +8,13 @@ main: kit: entity: user_data: {
     {
       name: "date"
       req: false
+      short: "Date of the data breach or collection in YYYY-MM format"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: true
+      short: "Name of the data source"
       type: "`$STRING`"
     }
   ]

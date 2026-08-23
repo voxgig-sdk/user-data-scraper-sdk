@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'UserDataScraper',
+        slug: "user-data-scraper",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,11 +67,13 @@ class Config {
       "fields": [
         {
           "name": "date",
+          "short": "Date of the data breach or collection in YYYY-MM format",
           "type": "`$STRING`"
         },
         {
           "name": "name",
           "req": true,
+          "short": "Name of the data source",
           "type": "`$STRING`"
         }
       ],
