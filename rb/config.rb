@@ -28,6 +28,7 @@ module UserDataScraperConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
