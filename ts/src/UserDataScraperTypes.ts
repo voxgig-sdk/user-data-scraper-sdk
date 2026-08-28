@@ -11,7 +11,6 @@ export interface UserData {
 }
 
 export interface UserDataListMatch {
-  date?: string
-  name?: string
+  check: string
 }
 

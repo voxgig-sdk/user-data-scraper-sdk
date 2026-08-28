@@ -22,7 +22,6 @@ class UserData
 /** Request payload for UserData#list. */
 class UserDataListMatch
 {
-    public ?string $date = null;
-    public ?string $name = null;
+    public string $check;
 }
 

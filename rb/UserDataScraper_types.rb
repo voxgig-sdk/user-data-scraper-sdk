@@ -23,14 +23,10 @@ UserData = Struct.new(
 
 # Request payload for UserData#list.
 #
-# @!attribute [rw] date
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
+# @!attribute [rw] check
+#   @return [String]
 UserDataListMatch = Struct.new(
-  :date,
-  :name,
+  :check,
   keyword_init: true
 )
 

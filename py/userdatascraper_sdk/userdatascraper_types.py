@@ -24,6 +24,5 @@ class UserData(UserDataRequired, total=False):
     date: str
 
 
-class UserDataListMatch(TypedDict, total=False):
-    date: str
-    name: str
+class UserDataListMatch(TypedDict):
+    check: str

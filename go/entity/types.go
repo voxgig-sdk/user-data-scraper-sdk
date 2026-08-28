@@ -20,8 +20,7 @@ type UserData struct {
 
 // UserDataListMatch is the typed request payload for UserData.ListTyped.
 type UserDataListMatch struct {
-	Date *string `json:"date,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Check string `json:"check"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
