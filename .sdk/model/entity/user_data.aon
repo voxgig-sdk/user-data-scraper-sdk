@@ -39,8 +39,10 @@ main: kit: entity: user_data: {
           }
           method: "GET"
           orig: "/public"
-          parts: [
-            "public"
+          segments: [
+            {
+              lit: "public"
+            }
           ]
           select: {
             exist: [

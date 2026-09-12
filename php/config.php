@@ -91,8 +91,10 @@ class UserDataScraperConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public',
-                  'parts' => [
-                    'public',
+                  'segments' => [
+                    [
+                      'lit' => 'public',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -102,6 +104,9 @@ class UserDataScraperConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'public',
                   ],
                 ],
               ],
