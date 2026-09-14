@@ -105,7 +105,7 @@ local results, err = client:UserData():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
+| TypeScript | `@voxgig-sdk/user-data-scraper-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
 | Python | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
 | PHP | `voxgig-sdk/user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/user-data-scraper-sdk/go` | `go get github.com/voxgig-sdk/user-data-scraper-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:UserData():list()
 ### TypeScript
 
 ```ts
-import { UserDataScraperSDK } from '@voxgig-sdk/user-data-scraper'
+import { UserDataScraperSDK } from '@voxgig-sdk/user-data-scraper-sdk'
 
 const client = new UserDataScraperSDK()
 

@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { UserDataScraperSDK } from '@voxgig-sdk/user-data-scraper'
+import { UserDataScraperSDK } from '@voxgig-sdk/user-data-scraper-sdk'
 
 const client = new UserDataScraperSDK()
 ```
@@ -405,7 +405,7 @@ user-data-scraper/
 Import the SDK from the package root:
 
 ```ts
-import { UserDataScraperSDK } from '@voxgig-sdk/user-data-scraper'
+import { UserDataScraperSDK } from '@voxgig-sdk/user-data-scraper-sdk'
 ```
 
 ### Entity state
