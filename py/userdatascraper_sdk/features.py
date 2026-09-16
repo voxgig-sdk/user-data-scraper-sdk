@@ -1,12 +1,18 @@
 # UserDataScraper SDK feature factory
 
 from userdatascraper_sdk.feature.base_feature import UserDataScraperBaseFeature
+from userdatascraper_sdk.feature.ratelimit_feature import UserDataScraperRatelimitFeature
+from userdatascraper_sdk.feature.retry_feature import UserDataScraperRetryFeature
 from userdatascraper_sdk.feature.test_feature import UserDataScraperTestFeature
+from userdatascraper_sdk.feature.timeout_feature import UserDataScraperTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: UserDataScraperBaseFeature(),
+    "ratelimit": lambda: UserDataScraperRatelimitFeature(),
+    "retry": lambda: UserDataScraperRetryFeature(),
     "test": lambda: UserDataScraperTestFeature(),
+    "timeout": lambda: UserDataScraperTimeoutFeature(),
 }
 
 
