@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      user_data: {
-      },
-
+        user_data: {
+        },
+  
     }
   }
 

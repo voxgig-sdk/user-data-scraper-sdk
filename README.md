@@ -105,12 +105,12 @@ local results, err = client:UserData():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/user-data-scraper-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
-| Python | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
-| PHP | `voxgig-sdk/user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
+| TypeScript | `@voxgig-sdk/user-data-scraper-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
+| Python | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
+| PHP | `voxgig-sdk/user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/user-data-scraper-sdk/go` | `go get github.com/voxgig-sdk/user-data-scraper-sdk/go@latest` |
-| Ruby | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
-| Lua | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases) |
+| Ruby | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
+| Lua | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/user-data-scraper-sdk/go-cli` | `go install github.com/voxgig-sdk/user-data-scraper-sdk/go-cli/cmd/user-data-scraper@latest` |
 | Go MCP server | `github.com/voxgig-sdk/user-data-scraper-sdk/go-mcp` | `go get github.com/voxgig-sdk/user-data-scraper-sdk/go-mcp@latest` |
 
