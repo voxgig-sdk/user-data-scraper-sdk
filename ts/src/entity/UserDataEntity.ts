@@ -19,7 +19,6 @@ import type {
   UserDataListMatch,
 } from '../UserDataScraperTypes'
 
-// TODO: needs Entity superclass
 class UserDataEntity extends UserDataScraperEntityBase<UserData> {
 
   constructor(client: UserDataScraperSDK, entopts: any) {

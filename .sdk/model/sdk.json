@@ -24,28 +24,96 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "user_data": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "date",
-              "req": false,
-              "short": "Date of the data breach or collection in YYYY-MM format",
-              "type": "`$STRING`"
+          "fields": {
+            "date": {
+              "a": true,
+              "h": "Date",
+              "n": "date",
+              "r": false,
+              "sh": "Date of the data breach or collection in YYYY-MM format",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "short": "Name of the data source",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Name of the data source",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "user_data",
           "op": {
             "list": {
@@ -53,40 +121,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /public",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "example",
-                        "kind": "query",
-                        "name": "check",
-                        "orig": "check",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "example",
+                        "k": "query",
+                        "n": "check",
+                        "or": "check",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /public",
-                    "json": "{\"operationId\":\"checkUserData\",\"parameters\":[{\"description\":\"The identifier to search for (e.g., email, username, phone number)\",\"example\":\"example\",\"in\":\"query\",\"name\":\"check\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"fields\":[\"password\",\"gender\",\"zip\",\"first_name\",\"ip1\",\"address\",\"origin\",\"middle_name\",\"profile_name\",\"telegram_id\",\"state\",\"ip2\",\"username\",\"dob\",\"last_name\",\"phone\",\"name\",\"ip\",\"city\",\"country\"],\"found\":995,\"sources\":[{\"date\":\"2022-01\",\"name\":\"Twitter.com (scraping data)\"},{\"date\":\"2017-11\",\"name\":\"VimeWorld.ru\"},{\"date\":\"2019-05\",\"name\":\"Canva.com\"}],\"success\":true},\"schema\":{\"properties\":{\"fields\":{\"description\":\"List of available data fields found in the results\",\"items\":{\"enum\":[\"password\",\"gender\",\"zip\",\"first_name\",\"ip1\",\"address\",\"origin\",\"middle_name\",\"profile_name\",\"telegram_id\",\"state\",\"ip2\",\"username\",\"dob\",\"last_name\",\"phone\",\"name\",\"ip\",\"city\",\"country\"],\"type\":\"string\"},\"type\":\"array\"},\"found\":{\"description\":\"Number of records found matching the query\",\"type\":\"integer\"},\"sources\":{\"description\":\"List of data sources where the information was found\",\"items\":{\"properties\":{\"date\":{\"description\":\"Date of the data breach or collection in YYYY-MM format\",\"pattern\":\"^\\\\d{4}-\\\\d{2}$\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the data source\",\"type\":\"string\"}},\"required\":[\"name\"],\"type\":\"object\"},\"type\":\"array\"},\"success\":{\"description\":\"Indicates if the request was successful\",\"type\":\"boolean\"}},\"required\":[\"success\",\"found\",\"fields\",\"sources\"],\"type\":\"object\"}}},\"description\":\"Successful response with user data\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing what went wrong\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid or missing parameters\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"fields\":{\"example\":[],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"found\":{\"example\":0,\"type\":\"integer\"},\"sources\":{\"example\":[],\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"success\":{\"example\":true,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"No data found for the provided query\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/public",
-                  "segments": [
-                    {
-                      "lit": "public"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/public",
+                  "q": {
                     "exist": [
                       "check"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "public"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -515,13 +583,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

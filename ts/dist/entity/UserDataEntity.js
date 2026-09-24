@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDataEntity = void 0;
 const UserDataScraperEntityBase_1 = require("../UserDataScraperEntityBase");
-// TODO: needs Entity superclass
 class UserDataEntity extends UserDataScraperEntityBase_1.UserDataScraperEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

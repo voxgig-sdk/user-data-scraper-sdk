@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -139,14 +132,16 @@ class Config {
       "fields": [
         {
           "name": "date",
-          "short": "Date of the data breach or collection in YYYY-MM format",
-          "type": "`$STRING`"
+          "title": "Date",
+          "type": "`$STRING`",
+          "short": "Date of the data breach or collection in YYYY-MM format"
         },
         {
           "name": "name",
+          "title": "Name",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Name of the data source",
-          "type": "`$STRING`"
+          "short": "Name of the data source"
         }
       ],
       "name": "user_data",
@@ -156,18 +151,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "example",
-                    "kind": "query",
-                    "name": "check",
-                    "orig": "check",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/public",
@@ -176,18 +159,31 @@ class Config {
                   "lit": "public"
                 }
               ],
-              "select": {
-                "exist": [
-                  "check"
-                ]
-              },
+              "parts": [
+                "public"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "public"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "check",
+                    "orig": "check",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "example"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "check"
+                ]
+              }
             }
           ]
         }

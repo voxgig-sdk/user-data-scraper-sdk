@@ -116,14 +116,16 @@ def make_config():
         "fields": [
           {
             "name": "date",
-            "short": "Date of the data breach or collection in YYYY-MM format",
+            "title": "Date",
             "type": "`$STRING`",
+            "short": "Date of the data breach or collection in YYYY-MM format",
           },
           {
             "name": "name",
+            "title": "Name",
+            "type": "`$STRING`",
             "req": True,
             "short": "Name of the data source",
-            "type": "`$STRING`",
           },
         ],
         "name": "user_data",
@@ -133,18 +135,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "example",
-                      "kind": "query",
-                      "name": "check",
-                      "orig": "check",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/public",
@@ -153,18 +143,31 @@ def make_config():
                     "lit": "public",
                   },
                 ],
+                "parts": [
+                  "public",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "check",
+                      "orig": "check",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "example",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "check",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "public",
-                ],
               },
             ],
           },

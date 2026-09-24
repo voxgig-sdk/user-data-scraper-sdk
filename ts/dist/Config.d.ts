@@ -76,14 +76,16 @@ declare class Config {
         user_data: {
             fields: ({
                 name: string;
-                short: string;
+                title: string;
                 type: string;
+                short: string;
                 req?: undefined;
             } | {
                 name: string;
+                title: string;
+                type: string;
                 req: boolean;
                 short: string;
-                type: string;
             })[];
             name: string;
             op: {
@@ -91,30 +93,31 @@ declare class Config {
                     input: string;
                     name: string;
                     points: {
-                        args: {
-                            query: {
-                                example: string;
-                                kind: string;
-                                name: string;
-                                orig: string;
-                                reqd: boolean;
-                                type: string;
-                            }[];
-                        };
                         kind: string;
                         method: string;
                         orig: string;
                         segments: {
                             lit: string;
                         }[];
-                        select: {
-                            exist: string[];
-                        };
+                        parts: string[];
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
                         };
-                        parts: string[];
+                        args: {
+                            query: {
+                                name: string;
+                                orig: string;
+                                type: string;
+                                kind: string;
+                                reqd: boolean;
+                                example: string;
+                            }[];
+                        };
+                        select: {
+                            exist: string[];
+                        };
                     }[];
                 };
             };

@@ -91,14 +91,16 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "date",
-						"short": "Date of the data breach or collection in YYYY-MM format",
+						"title": "Date",
 						"type": "`$STRING`",
+						"short": "Date of the data breach or collection in YYYY-MM format",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Name of the data source",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "user_data",
@@ -108,18 +110,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "example",
-											"kind": "query",
-											"name": "check",
-											"orig": "check",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/public",
@@ -128,17 +118,30 @@ func MakeConfig() map[string]any {
 										"lit": "public",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"check",
-									},
+								"parts": []any{
+									"public",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"public",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "check",
+											"orig": "check",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "example",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"check",
+									},
 								},
 							},
 						},

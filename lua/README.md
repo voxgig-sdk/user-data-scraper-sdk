@@ -43,7 +43,7 @@ local userdatas, err = client:UserData():list()
 if err then error(err) end
 
 for _, item in ipairs(userdatas) do
-  print(item["date"])
+  print(item)
 end
 ```
 

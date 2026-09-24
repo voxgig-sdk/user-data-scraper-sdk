@@ -113,14 +113,16 @@ class UserDataScraperConfig
           'fields' => [
             [
               'name' => 'date',
-              'short' => 'Date of the data breach or collection in YYYY-MM format',
+              'title' => 'Date',
               'type' => '`$STRING`',
+              'short' => 'Date of the data breach or collection in YYYY-MM format',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Name of the data source',
-              'type' => '`$STRING`',
             ],
           ],
           'name' => 'user_data',
@@ -130,18 +132,6 @@ class UserDataScraperConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'example',
-                        'kind' => 'query',
-                        'name' => 'check',
-                        'orig' => 'check',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/public',
@@ -150,17 +140,30 @@ class UserDataScraperConfig
                       'lit' => 'public',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'check',
-                    ],
+                  'parts' => [
+                    'public',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'public',
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'check',
+                        'orig' => 'check',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                        'example' => 'example',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'check',
+                    ],
                   ],
                 ],
               ],
