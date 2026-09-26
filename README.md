@@ -106,11 +106,11 @@ local results, err = client:UserData():list()
 | Language | Package | Install |
 | --- | --- | --- |
 | TypeScript | `@voxgig-sdk/user-data-scraper-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
-| Python | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
-| PHP | `voxgig-sdk/user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
+| Python | `voxgig-sdk-user-data-scraper-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
+| PHP | `voxgig-sdk/user-data-scraper-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/user-data-scraper-sdk/go` | `go get github.com/voxgig-sdk/user-data-scraper-sdk/go@latest` |
-| Ruby | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
-| Lua | `voxgig-sdk-user-data-scraper` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
+| Ruby | `voxgig-sdk-user-data-scraper-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
+| Lua | `voxgig-sdk-user-data-scraper-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/user-data-scraper-sdk/go-cli` | `go install github.com/voxgig-sdk/user-data-scraper-sdk/go-cli/cmd/user-data-scraper@latest` |
 | Go MCP server | `github.com/voxgig-sdk/user-data-scraper-sdk/go-mcp` | `go get github.com/voxgig-sdk/user-data-scraper-sdk/go-mcp@latest` |
 
@@ -339,10 +339,10 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 
