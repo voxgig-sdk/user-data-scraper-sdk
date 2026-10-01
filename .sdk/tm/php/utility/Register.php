@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 UserDataScraperUtility::setRegistrar(function (UserDataScraperUtility $u): void {
     $u->clean = [UserDataScraperClean::class, 'call'];
+    $u->clean_add = [UserDataScraperClean::class, 'add'];
+    $u->clean_explain = [UserDataScraperDone::class, 'clean_explain'];
     $u->done = [UserDataScraperDone::class, 'call'];
     $u->make_error = [UserDataScraperMakeError::class, 'call'];
     $u->feature_add = [UserDataScraperFeatureAdd::class, 'call'];

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 UserDataScraperUtility.registrar = ->(u) {
   u.clean = UserDataScraperUtilities::Clean
+  u.clean_add = UserDataScraperUtilities::CleanAdd
+  u.clean_explain = UserDataScraperUtilities::CleanExplain
   u.done = UserDataScraperUtilities::Done
   u.make_error = UserDataScraperUtilities::MakeError
   u.feature_add = UserDataScraperUtilities::FeatureAdd
