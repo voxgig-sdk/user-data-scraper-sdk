@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/user-data-scraper-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/user-data-scraper-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = UserDataScraperSDK.new
 
 ```ruby
 begin
-  # list returns an Array of UserData records — iterate directly.
-  userdatas = client.UserData.list
+  # list returns an Array of UserData entities, one per record; data_get reads the record.
+  userdatas = client.UserData.list({ "check" => "example" })
   userdatas.each do |item|
-    puts "#{item["date"]}"
+    record = item.data_get
+    puts "#{record["date"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -60,7 +61,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  userdatas = client.UserData.list()
+  userdatas = client.UserData.list({ "check" => "example" })
 rescue => err
   warn "list failed: #{err}"
 end
@@ -128,10 +129,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = UserDataScraperSDK.test
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-userdata = client.UserData.list()
-puts userdata
+# list returns an Array of UserData entities, one per mock record (raises on
+# error); data_get reads each record.
+userdatas = client.UserData.list({ "check" => "example" })
+userdatas.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -215,7 +216,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -225,9 +226,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `UserDataScraperError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`UserDataScraperError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -278,8 +280,9 @@ Create an instance: `user_data = client.UserData`
 #### Example: List
 
 ```ruby
-# list returns an Array of UserData records (raises on error).
-user_datas = client.UserData.list
+# list returns an Array of UserData entities, one per record (raises on error).
+user_datas = client.UserData.list({ "check" => "example" })
+user_datas.each { |item| puts item.data_get }
 ```
 
 ## Features
@@ -445,7 +448,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 userdata = client.UserData
-userdata.list()
+userdata.list({ "check" => "example" })
 
 # userdata.data_get now returns the userdata data from the last list
 # userdata.match_get returns the last match criteria
